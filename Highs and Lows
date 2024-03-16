@@ -63,3 +63,35 @@ int OnCalculate(const int rates_total,
             break;
            }
         }
+
+ // Check if it's a low
+      bool isLow = true;
+      for(int j = 1; j <= lookbackBars; j++)
+        {
+         if (currentLow > low[i + j])
+           {
+            isLow = false;
+            break;
+           }
+        }
+
+      // Set arrow for high
+      if (isHigh)
+         HighsBuffer[i] = currentHigh;
+      else
+         HighsBuffer[i] = 0;
+
+      // Set arrow for low
+      if (isLow)
+         LowsBuffer[i] = currentLow;
+      else
+         LowsBuffer[i] = 0;
+     }
+
+   return(rates_total);
+  }
+//+------------------------------------------------------------------+
+
+// Define buffers
+double HighsBuffer[];
+double LowsBuffer[];
