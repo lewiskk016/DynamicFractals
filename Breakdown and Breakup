@@ -29,4 +29,34 @@ int OnInit()
    return(INIT_SUCCEEDED);
   }
 
-  
+  //+------------------------------------------------------------------+
+//| Custom indicator iteration function                              |
+//+------------------------------------------------------------------+
+int OnCalculate(const int rates_total,
+                const int prev_calculated,
+                const datetime &time[],
+                const double &open[],
+                const double &high[],
+                const double &low[],
+                const double &close[],
+                const long &tick_volume[],
+                const long &volume[],
+                const int &spread[])
+  {
+   int limit = rates_total - prev_calculated;
+
+   for(int i = limit - 1; i >= 0; i--)
+     {
+      double currentHigh = high[i];
+      double currentLow = low[i];
+
+      // Calculate breakdown origin point
+      bool isBreakdown = false;
+      for(int j = 1; j <= lookbackBars; j++)
+        {
+         if (currentLow < low[i + j])
+           {
+            isBreakdown = true;
+            break;
+           }
+        }
