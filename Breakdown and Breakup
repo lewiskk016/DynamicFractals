@@ -60,3 +60,35 @@ int OnCalculate(const int rates_total,
             break;
            }
         }
+
+  // Calculate breakout origin point
+      bool isBreakout = false;
+      for(int j = 1; j <= lookbackBars; j++)
+        {
+         if (currentHigh > high[i + j])
+           {
+            isBreakout = true;
+            break;
+           }
+        }
+
+      // Set arrow for breakdown
+      if (isBreakdown)
+         BreakdownBuffer[i] = currentLow;
+      else
+         BreakdownBuffer[i] = 0;
+
+      // Set arrow for breakout
+      if (isBreakout)
+         BreakoutBuffer[i] = currentHigh;
+      else
+         BreakoutBuffer[i] = 0;
+     }
+
+   return(rates_total);
+  }
+//+------------------------------------------------------------------+
+
+// Define buffers
+double BreakdownBuffer[];
+double BreakoutBuffer[];
