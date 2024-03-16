@@ -1,0 +1,33 @@
+#property strict
+
+//+------------------------------------------------------------------+
+//| Custom Highs and Lows Indicator                                  |
+//|                                                                  |
+//| This indicator identifies highs and lows based on custom logic.  |
+//+------------------------------------------------------------------+
+
+
+// Parameters
+input int lookbackBars = 10; // Number of bars to look back for highs and lows
+
+//+------------------------------------------------------------------+
+//| Custom indicator initialization function                         |
+//+------------------------------------------------------------------+
+int OnInit()
+  {
+   IndicatorBuffers(2);
+   SetIndexBuffer(0, HighsBuffer);
+   SetIndexBuffer(1, LowsBuffer);
+
+   SetIndexStyle(0, DRAW_ARROW);
+   SetIndexArrow(0, 233); // Up arrow
+   SetIndexStyle(1, DRAW_ARROW);
+   SetIndexArrow(1, 234); // Down arrow
+
+   ArraySetAsSeries(HighsBuffer, true);
+   ArraySetAsSeries(LowsBuffer, true);
+
+   return(INIT_SUCCEEDED);
+  }
+
+  
