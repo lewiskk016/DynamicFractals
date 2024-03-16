@@ -1,0 +1,32 @@
+#property strict
+
+//+------------------------------------------------------------------+
+//| Custom Breakdown and Breakout Indicator                         |
+//|                                                                  |
+//| This indicator identifies breakdown and breakout points based on custom logic.  |
+//+------------------------------------------------------------------+
+
+// Parameters
+input int lookbackBars = 10; // Number of bars to look back for identifying origin points
+
+//+------------------------------------------------------------------+
+//| Custom indicator initialization function                         |
+//+------------------------------------------------------------------+
+int OnInit()
+  {
+   IndicatorBuffers(2);
+   SetIndexBuffer(0, BreakdownBuffer);
+   SetIndexBuffer(1, BreakoutBuffer);
+
+   SetIndexStyle(0, DRAW_ARROW);
+   SetIndexArrow(0, 233); // Down arrow for breakdown
+   SetIndexStyle(1, DRAW_ARROW);
+   SetIndexArrow(1, 234); // Up arrow for breakout
+
+   ArraySetAsSeries(BreakdownBuffer, true);
+   ArraySetAsSeries(BreakoutBuffer, true);
+
+   return(INIT_SUCCEEDED);
+  }
+
+  
