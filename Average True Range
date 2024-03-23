@@ -1,6 +1,19 @@
+#property strict
+
 // Input parameters
-input int atr_period = 14;          // ATR period
-input double risk_percent = 2.0;    // Risk percentage per trade
+input int atr_period = 14;              // ATR period
+input double risk_percent = 2.0;        // Risk percentage per trade
+input int stop_loss_pips = 30;          // Stop loss distance in pips
+input int take_profit_pips = 60;        // Take profit distance in pips
+input int trailing_stop_pips = 20;      // Trailing stop distance in pips
+input bool use_time_filter = true;      // Use time filter
+input int start_hour = 8;               // Start hour for trading
+input int end_hour = 20;                // End hour for trading
+input bool use_additional_confirmation = false; // Use additional confirmation
+input int ma_period = 50;               // Moving average period
+input int rsi_period = 14;              // RSI period
+input double rsi_overbought_level = 70; // RSI overbought level
+input double rsi_oversold_level = 30;   // RSI oversold level
 
 //+------------------------------------------------------------------+
 //| Expert initialization function                                   |
