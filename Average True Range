@@ -9,3 +9,22 @@ int OnInit()
   {
    return(INIT_SUCCEEDED);
 }
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+  {
+  }
+//+------------------------------------------------------------------+
+//| Expert tick function                                             |
+//+------------------------------------------------------------------+
+
+void OnTick()
+  {
+   double atr = iATR(NULL, 0, atr_period, 0);  // Calculate ATR
+
+   double risk_per_trade = AccountFreeMarginCheck(Symbol(),OP_BUY,1.0)/atr*risk_percent;
+
+   // Buy condition: If current price crosses above the previous high plus ATR * 1
+   if (High[1] + atr * 1 < Ask)
