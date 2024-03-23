@@ -38,3 +38,18 @@ void OnTick()
          Print("Error opening buy order: ", GetLastError());
       }
    }
+
+    // Sell condition: If current price crosses below the previous low minus ATR * 1
+   if (Low[1] - atr * 1 > Bid) {
+      // Calculate lot size based on risk percentage
+      double lot_size = risk_per_trade / MarketInfo(Symbol(), MODE_MARGINREQUIRED);
+
+      // Open a sell trade
+      if (OrderSend(Symbol(), OP_SELL, lot_size, Bid, 3, 0, 0, "Sell order", 0, 0, clrRed) > 0) {
+         Print("Sell order opened successfully");
+      } else {
+         Print("Error opening sell order: ", GetLastError());
+      }
+   }
+  }
+//+------------------------------------------------------------------+
