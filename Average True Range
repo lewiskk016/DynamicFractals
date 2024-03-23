@@ -51,9 +51,11 @@ void OnTick()
 
    double risk_per_trade = AccountFreeMarginCheck(Symbol(),OP_BUY,1.0)/atr*risk_percent;
 
+    // Calculate stop loss and take profit
 
    // Buy condition: If current price crosses above the previous high plus ATR * 1
    if (High[1] + atr * 1 < Ask)
+
  // Calculate lot size based on risk percentage
       double lot_size = risk_per_trade / MarketInfo(Symbol(), MODE_MARGINREQUIRED);
      // Apply time filter
@@ -76,6 +78,8 @@ void OnTick()
       }
    }
 
+
+
     // Sell condition: If current price crosses below the previous low minus ATR * 1
    if (Low[1] - atr * 1 > Bid) {
       // Calculate lot size based on risk percentage
@@ -93,6 +97,12 @@ void OnTick()
       } else {
          Print("Error opening sell order: ", GetLastError());
       }
+
    }
-  
+
+
+//+------------------------------------------------------------------+
+
+//+------------------------------------------------------------------+
+
 //+------------------------------------------------------------------+
