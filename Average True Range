@@ -1,0 +1,11 @@
+// Input parameters
+input int atr_period = 14;          // ATR period
+input double risk_percent = 2.0;    // Risk percentage per trade
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+  {
+   return(INIT_SUCCEEDED);
+}
