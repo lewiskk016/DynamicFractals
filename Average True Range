@@ -82,11 +82,17 @@ void OnTick()
       double lot_size = risk_per_trade / MarketInfo(Symbol(), MODE_MARGINREQUIRED);
 
       // Open a sell trade
-      if (OrderSend(Symbol(), OP_SELL, lot_size, Bid, 3, 0, 0, "Sell order", 0, 0, clrRed) > 0) {
+      int ticket = OrderSend(Symbol(), OP_SELL, lot_size, Bid, 3, stop_loss, take_profit, "Sell order", 0, 0, clrRed);
+      if (ticket > 0) {
          Print("Sell order opened successfully");
+         // Apply trailing stop
+         if (trailing_stop_pips > 0) {
+            double trailing_stop = Bid + trailing_stop_pips * Point;
+            OrderModify(ticket, 0, trailing_stop, 0, 0, clrRed);
+         }
       } else {
          Print("Error opening sell order: ", GetLastError());
       }
    }
-  }
+  
 //+------------------------------------------------------------------+
