@@ -29,3 +29,24 @@ void OnTick()
    double DeMarkerBuffer[];
    int calculated_bars = IndicatorCounted();
    int start_bar = Bars - calculated_bars - 1;
+
+    // Calculate DeMarker values
+   if (CopyBuffer(0, 0, start_bar, calculated_bars, DeMarkerBuffer) < 0)
+     {
+      Print("Failed to copy buffer! Error code: ", GetLastError());
+      return;
+     }
+
+   // Calculate buy and sell signals
+   if (DeMarkerBuffer[1] > OverboughtLevel && DeMarkerBuffer[0] <= OverboughtLevel)
+     {
+      // Sell signal
+      OrderSend(Symbol(), OP_SELL, 0.1, Ask, 3, 0, 0, "DeMarker EA", 0, 0, clrRed);
+     }
+   else if (DeMarkerBuffer[1] < OversoldLevel && DeMarkerBuffer[0] >= OversoldLevel)
+     {
+      // Buy signal
+      OrderSend(Symbol(), OP_BUY, 0.1, Bid, 3, 0, 0, "DeMarker EA", 0, 0, clrGreen);
+     }
+  }
+//+------------------------------------------------------------------+
