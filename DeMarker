@@ -13,4 +13,19 @@ int OnInit()
   {
    return(INIT_SUCCEEDED);
   }
-  
+
+  //+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+  {
+
+  }
+//+------------------------------------------------------------------+
+//| Expert tick function                                             |
+//+------------------------------------------------------------------+
+void OnTick()
+  {
+   double DeMarkerBuffer[];
+   int calculated_bars = IndicatorCounted();
+   int start_bar = Bars - calculated_bars - 1;
