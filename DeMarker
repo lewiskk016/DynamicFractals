@@ -1,0 +1,16 @@
+#property version   "1.00"
+#property strict
+
+// Input parameters
+input int DeMarkerPeriod = 14; // DeMarker period
+input double OverboughtLevel = 70; // Overbought level
+input double OversoldLevel = 30; // Oversold level
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+  {
+   return(INIT_SUCCEEDED);
+  }
+  
