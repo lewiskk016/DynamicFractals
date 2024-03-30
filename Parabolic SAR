@@ -37,3 +37,16 @@ void OnTick()
    // Calculate buy and sell signals
    double current_sar = sar[0];
    double previous_sar = sar[1];
+
+    if (previous_sar < Low[1] && current_sar >= Low[0])
+     {
+      // Buy signal
+      OrderSend(Symbol(), OP_BUY, 0.1, Ask, 3, 0, 0, "SAR EA", 0, 0, clrGreen);
+     }
+   else if (previous_sar > High[1] && current_sar <= High[0])
+     {
+      // Sell signal
+      OrderSend(Symbol(), OP_SELL, 0.1, Bid, 3, 0, 0, "SAR EA", 0, 0, clrRed);
+     }
+  }
+//+------------------------------------------------------------------+
