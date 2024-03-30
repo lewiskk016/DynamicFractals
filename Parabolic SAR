@@ -26,3 +26,14 @@ void OnTick()
    double sar[];
    int calculated_bars = IndicatorCounted();
    int start_bar = Bars - calculated_bars - 1;
+
+     // Calculate Parabolic SAR values
+   if (CopyBuffer(0, 0, start_bar, calculated_bars, sar) < 0)
+     {
+      Print("Failed to copy buffer! Error code: ", GetLastError());
+      return;
+     }
+
+   // Calculate buy and sell signals
+   double current_sar = sar[0];
+   double previous_sar = sar[1];
