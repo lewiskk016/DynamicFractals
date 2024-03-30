@@ -1,0 +1,13 @@
+#property strict
+
+// Input parameters
+input int SARStep = 0.02; // Step for the Parabolic SAR indicator
+input int SARMaximum = 0.2; // Maximum value for the Parabolic SAR indicator
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+  {
+   return(INIT_SUCCEEDED);
+  }
