@@ -15,3 +15,17 @@ double         RFIBuffer[];
 #property indicator_color1  clrRed
 #property indicator_style1  STYLE_SOLID
 #property indicator_width1  1
+
+//+------------------------------------------------------------------+
+//| Custom indicator initialization function                         |
+//+------------------------------------------------------------------+
+int OnInit()
+  {
+   // Indicator buffers mapping
+   SetIndexBuffer(0, RFIBuffer);
+
+   // Set the indicator label
+   PlotIndexSetString(0, PLOT_LABEL, "RFI");
+
+   return(INIT_SUCCEEDED);
+  }
