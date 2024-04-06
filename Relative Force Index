@@ -38,3 +38,17 @@ double RelativeForceIndex(const int index)
    double prevClose = Close[index + 1];
    double force = High[index] - prevClose;
    double prevForce = Low[index] - prevClose;
+
+ for(int i = index - 1; i > index - RFI_Period; i--)
+   {
+      double currentForce = High[i] - Close[i + 1];
+      double currentPrevForce = Low[i] - Close[i + 1];
+      force += currentForce;
+      prevForce += currentPrevForce;
+   }
+
+   if (prevForce == 0)
+      return (force == 0 ? 50 : 100);
+   else
+      return (force / prevForce) * 100;
+}
