@@ -66,3 +66,20 @@ int OnCalculate(const int rates_total,
                 const long &tick_volume[],
                 const long &volume[],
                 const int &spread[])
+
+                  {
+   //--- check for data adequacy
+   if(rates_total < RFI_Period)
+      return (0);
+
+   //--- preliminary calculations
+   int limit = rates_total - prev_calculated;
+
+   //--- calculate RFI values
+   for(int i = limit; i >= 0; i--)
+      RFIBuffer[i] = iRSI(NULL, 0, RFI_Period, PRICE_CLOSE, i) - iMAOnArray(RFIBuffer, 0, RFI_Smooth, 0, MODE_SMA, i);
+
+   //--- return value of prev_calculated for next call
+   return (rates_total);
+  }
+//+------------------------------------------------------------------+
