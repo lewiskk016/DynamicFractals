@@ -29,3 +29,12 @@ int OnInit()
 
    return(INIT_SUCCEEDED);
   }
+
+  //+------------------------------------------------------------------+
+//| Relative Force Index                                             |
+//+------------------------------------------------------------------+
+double RelativeForceIndex(const int index)
+{
+   double prevClose = Close[index + 1];
+   double force = High[index] - prevClose;
+   double prevForce = Low[index] - prevClose;
