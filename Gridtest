@@ -60,4 +60,22 @@ int OnCalculate(const int rates_total,
    return(rates_total);
   }
 
+//+------------------------------------------------------------------+
+//| Calculate grid levels                                            |
+//+------------------------------------------------------------------+
+void CalculateGridLevels()
+  {
+   // Get the highest high and lowest low within visible bars
+   double highestHigh = High[Highest(NULL, 0, MODE_HIGH, Bars - 1, 0)];
+   double lowestLow = Low[Lowest(NULL, 0, MODE_LOW, Bars - 1, 0)];
 
+   // Calculate grid level step
+   double step = (highestHigh - lowestLow) / 10.0;
+
+   // Calculate grid levels
+   for (int i = 0; i < 11; i++)
+     {
+      UpBuffer[i] = highestHigh - i * step;
+      DownBuffer[i] = lowestLow + i * step;
+     }
+  }
