@@ -1,1 +1,21 @@
-this is a grid test
+#property indicator_chart_window
+#property indicator_buffers 2
+
+double UpBuffer[];
+double DownBuffer[];
+
+//+------------------------------------------------------------------+
+//| Custom indicator initialization function                         |
+//+------------------------------------------------------------------+
+int OnInit()
+  {
+   // Set indicator buffers
+   SetIndicatorBuffers();
+
+   // Set indicator properties
+   SetIndicatorProperties();
+
+   // Initialization done
+   return(INIT_SUCCEEDED);
+  }
+  
