@@ -53,3 +53,11 @@ int OnCalculate(const int rates_total,
                 const long &volume[],
                 const int &spread[])
   {
+       // Calculate grid levels
+   CalculateGridLevels();
+
+   // Return that calculation is complete
+   return(rates_total);
+  }
+
+
