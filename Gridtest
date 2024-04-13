@@ -18,4 +18,12 @@ int OnInit()
    // Initialization done
    return(INIT_SUCCEEDED);
   }
-  
+
+ //+------------------------------------------------------------------+
+//| Set indicator buffers                                            |
+//+------------------------------------------------------------------+
+void SetIndicatorBuffers()
+  {
+   SetIndexBuffer(0, UpBuffer);
+   SetIndexBuffer(1, DownBuffer);
+  }
