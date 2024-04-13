@@ -27,3 +27,14 @@ void SetIndicatorBuffers()
    SetIndexBuffer(0, UpBuffer);
    SetIndexBuffer(1, DownBuffer);
   }
+
+  //+------------------------------------------------------------------+
+//| Set indicator properties                                         |
+//+------------------------------------------------------------------+
+void SetIndicatorProperties()
+  {
+   SetIndexStyle(0, DRAW_LINE);
+   SetIndexStyle(1, DRAW_LINE);
+   SetIndexLabel(0, "Grid Up");
+   SetIndexLabel(1, "Grid Down");
+  }
