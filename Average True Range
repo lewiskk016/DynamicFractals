@@ -1,10 +1,10 @@
 #property strict
 
 // Input parameters
-input int atr_period = 14;              // ATR period
-input double risk_percent = 2.0;        // Risk percentage per trade
-input int stop_loss_pips = 30;          // Stop loss distance in pips
-input int take_profit_pips = 60;        // Take profit distance in pips
+input int atr_period =  14;              // ATR period
+input double risk_percent =  2.0;        // Risk percentage per trade
+input int stop_loss_pips =  20;          // Stop loss distance in pips
+input int take_profit_pips = 40;        // Take profit distance in pips
 input int trailing_stop_pips = 20;      // Trailing stop distance in pips
 input bool use_time_filter = true;      // Use time filter
 input int start_hour = 8;               // Start hour for trading
