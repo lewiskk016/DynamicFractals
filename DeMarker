@@ -33,7 +33,7 @@ void OnTick()
     // Calculate DeMarker values
    if (CopyBuffer(0, 0, start_bar, calculated_bars, DeMarkerBuffer) < 0)
      {
-      Print("Failed to copy buffer! Error code: ", GetLastError());
+      Print("Could not copy buffer: ", GetLastError());
       return;
      }
 
