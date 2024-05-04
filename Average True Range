@@ -74,7 +74,7 @@ void OnTick()
       if (OrderSend(Symbol(), OP_BUY, lot_size, Ask, 3, 0, 0, "Buy order", 0, 0, clrGreen) > 0) {
          Print("Buy order opened successfully");
       } else {
-         Print("Error opening buy order: ", GetLastError());
+         Print("Cannot open buy order: ", GetLastError());
       }
    }
 
