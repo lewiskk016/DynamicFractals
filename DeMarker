@@ -41,7 +41,7 @@ void OnTick()
    if (DeMarkerBuffer[1] > OverboughtLevel && DeMarkerBuffer[0] <= OverboughtLevel)
      {
       // Sell signal
-      OrderSend(Symbol(), OP_SELL, 0.1, Ask, 4, 0, 0, "DeMarker EA", 0, 0, clrRed);
+      OrderSend(Symbol(), OP_SELL, 0.1, Ask, 4, 0, 0, "DeMarker E.A.", 0, 0, clrRed);
      }
    else if (DeMarkerBuffer[1] < OversoldLevel && DeMarkerBuffer[0] >= OversoldLevel)
      {
